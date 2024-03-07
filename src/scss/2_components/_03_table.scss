@@ -1,0 +1,43 @@
+.table-responsive {
+    overflow-x: auto;
+
+    .table {
+        width: 100%;
+        text-align: left;
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+
+        >thead {
+            vertical-align: bottom;
+        }
+
+        th {
+            font-weight: 700;
+        }
+
+        >:not(:first-child) {
+            border-top: 0;
+        }
+
+        >:not(caption)>*>* {
+            padding: 1.4rem 1.4rem;
+            color: #343a40;
+            background-color: #fff;
+            border-bottom-width: 1px;
+        }
+
+        .table-light {
+            color: #343a40;
+            border-color: #eff2f7;
+            background-color: #f8f9fa;
+        }
+
+        .table-success {
+            background-color: #CEF2E3;
+        }
+
+        tr {
+            border-bottom: 1px solid #eff2f7;
+        }
+    }
+}
