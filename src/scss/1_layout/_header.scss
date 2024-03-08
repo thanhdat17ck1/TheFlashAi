@@ -1,0 +1,195 @@
+/* Header
+------------------------------------------------------------*/
+.c-header {
+    // position: fixed;
+    // width: 100%;
+    // z-index: 99;
+  
+    &__inner {
+      padding: 29px 165px 29px 130px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      @include mq(xxl, max) {
+        padding: 29px 100px;
+      }
+  
+      @include mq(xl, max) {
+        padding: 29px 40px;
+      }
+  
+      @include mq(md, max) {
+        padding: 15px 20px;
+      }
+    }
+  
+    &__nav {
+        display: none;
+      @include mq(tab, max) {
+        display: block;
+        z-index: 1;
+        left: -100%;
+        position: fixed;
+        top: 0;
+        -webkit-transition: left 0.25s ease;
+        transition: left 0.25s ease;
+        margin-top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #FFF;
+        overflow: hidden;
+  
+        &.is-active {
+          left: 0;
+  
+          ul {
+            li {
+              &::after {
+                background-color: #000;
+              }
+            }
+          }
+  
+          @include land {
+            overflow: scroll;
+  
+            ul {
+              padding: 10% 40px;
+            }
+          }
+        }
+      }
+  
+      ul {
+        display: flex;
+        align-items: center;
+  
+        @include mq(tab, max) {
+          color: #000;
+          flex-direction: column;
+          padding: 26% 40px;
+          gap: 40px 0;
+          height: 100%;
+  
+        }
+  
+        li {
+          padding: 0 8px;
+          position: relative;
+  
+          +li {
+            margin-left: 19px;
+  
+            @include mq(tab, max) {
+              margin-left: 0;
+            }
+          }
+  
+          &.is-active {
+            &::after {
+              width: 100%;
+            }
+          }
+  
+          &::after {
+            background-color: #fff;
+            bottom: -5px;
+            left: 0;
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 0;
+            transition: 0.3s ease-out;
+          }
+  
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+  
+          &.apply {
+            &::after {
+              content: unset;
+            }
+          }
+        }
+  
+        .apply {
+          background-color: #dc2219;
+          padding: 0;
+          border-radius: 99px;
+  
+          a {
+            display: block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+  
+    &__logo {
+      width: 210px;
+      height: 20px;
+  
+      img {
+        width: 100%;
+  
+        @include sp {
+          width: 80%;
+        }
+      }
+  
+      .logo1 {
+        display: none;
+      }
+  
+      &.is-active {
+        .logo {
+          display: none;
+        }
+  
+        .logo1 {
+          display: block;
+          position: relative;
+          z-index: 9;
+        }
+      }
+    }
+  
+    &.is-scroll {
+      background-color: #FFF;
+      z-index: 999999;
+      top: 0 !important;
+      min-height: 50px;
+      box-shadow: 0 3px 6px 3px rgb(0 0 0 / 6%);
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+      background: #fff !important;
+  
+      .logo {
+        display: none;
+      }
+  
+      .logo1 {
+        display: block;
+      }
+  
+      ul {
+        li {
+          color: #000;
+  
+          &::after {
+            background-color: #000;
+          }
+        }
+      }
+    }
+  }

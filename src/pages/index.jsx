@@ -6,6 +6,7 @@ import './style.css'
 import Layout from '@/components/Layout'
 import Service from '../components/Service';
 import Deposit from '../components/Deposit';
+import Section1 from '../components/Section1';
 
 const Page = () => {
   const handleClick = () => {
@@ -18,6 +19,9 @@ const Page = () => {
       </Head>
       <Layout>
         <main className='l-container'>
+          <section>
+            <Section1 />
+          </section>
           <section className='mb-3'>
             <Deposit />
           </section>

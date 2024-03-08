@@ -1,0 +1,46 @@
+/* Style the custom select */
+.select-language {
+    display: flex;
+    justify-content: end;
+}
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 130px;
+}
+
+/* Style the selected option */
+.select-selected {
+  background-color: #569fc1;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* Style the options */
+.select-options {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Show the options when the select is clicked */
+.custom-select.open .select-options {
+  display: block;
+}

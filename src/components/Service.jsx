@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCube, faTrophy, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
-import Checkbox_cirle from './icon/checkbox-cirle';
+import Checkbox_cirle from './icon/Checkbox-cirle';
 import Modal from 'react-modal';
+import { useTranslation } from 'react-i18next';
 
 const Service = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isClient, setIsClient] = useState(false)
+    const {t} = useTranslation()
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+
      // Hàm mở modal
     const openModal = () => {
         setIsOpen(true);
@@ -29,7 +39,7 @@ const Service = () => {
                             </div>
                             <div className='info'>
                                 <div className="type">
-                                    <h5>TRIAL</h5>
+                                    <h5>{isClient ? t('TRIAL') : ''}</h5>
                                 </div>
                                 <span>Free</span>
                             </div>
@@ -62,7 +72,7 @@ const Service = () => {
                             </div>
                             <div className='info'>
                                 <div className="type">
-                                    <h5>BASIC</h5>
+                                    <h5>{isClient ? t('BASIC') : ''}</h5>
                                 </div>
                                 <span>Multiple Pair</span>
                             </div>
@@ -98,7 +108,7 @@ const Service = () => {
                             </div>
                             <div className='info'>
                                 <div className="type">
-                                    <h5>PREMIUM</h5>
+                                    <h5>{isClient ? t('PREMIUM') : ''}</h5>
                                 </div>
                                 <span>Unlimited</span>
                             </div>
@@ -134,7 +144,7 @@ const Service = () => {
                             </div>
                             <div className='info'>
                                 <div className="type">
-                                    <h5>PREMIUM SHARE</h5>
+                                    <h5>{isClient ? t('PREMIUM SHARE') : ''}</h5>
                                 </div>
                                 <span>Pay later</span>
                             </div>
@@ -146,7 +156,7 @@ const Service = () => {
                     </div>
                     <div className="card-bottom">
                         <h5>Plan Features :</h5>
-                        <ul>
+                        <ul> 
                             <li><Checkbox_cirle />30% profit share first license</li>
                             <li><Checkbox_cirle />25% profit share for additional license</li>
                             <li><Checkbox_cirle />Recommended balance from 2000/pair</li>
@@ -169,23 +179,22 @@ const Service = () => {
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
             >
-                <h2>Đăng ký</h2>
+                <div className='heading'>
+                    <h2>Đăng ký</h2>
+                </div>
                 <form action="">
                     <div>
-                        <label htmlFor="">Họ và tên</label>
-                        <input type="text" placeholder='Nhập họ tên' />
+                        <input type="text" name='name' placeholder='Nhập họ tên' />
                     </div>
                     <div>
-                        <label htmlFor="">Email</label>
-                        <input type="text" placeholder='Nhập email' />
+                        <input type="text" name='email' placeholder='Nhập email' />
                     </div>
                     <div>
-                        <label htmlFor="">Số điện thoại</label>
-                        <input type="text" placeholder='Nhập số điện thoại' />
+                        <input type="text" name='phone' placeholder='Nhập số điện thoại' />
                     </div>
                     <input type="submit" value="Gửi" />
                 </form>
-                <button onClick={closeModal}>Close Modal</button>
+                {/* <button onClick={closeModal}>Close Modal</button> */}
             </Modal>
         </div>
     </>

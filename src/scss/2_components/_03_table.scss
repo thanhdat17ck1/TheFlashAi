@@ -33,11 +33,35 @@
         }
 
         .table-success {
-            background-color: #CEF2E3;
+            background-color: #88daff;
         }
 
         tr {
             border-bottom: 1px solid #eff2f7;
+        }
+
+        tbody {
+            tr {
+                &:not(:last-child) {
+                    th {
+                        &:nth-child(1) {
+                            position: sticky;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        thead {
+            tr {
+                th {
+                    &:nth-child(1) {
+                        position: sticky;
+                        left: 0;
+                    }
+                }
+            }
         }
     }
 }

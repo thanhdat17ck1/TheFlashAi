@@ -1,0 +1,22 @@
+.btn {
+    border-radius: 8px;
+    padding: 12px;
+
+    &-login {
+        background-color: #0BB197;
+        color: #fff;
+        font-size: 1.4rem;
+    }
+
+    &-sign {
+        border: 1px solid #0bb197;
+        color: #0bb197;
+        font-size: 1.4rem;
+        transition: .3s;
+
+        &:hover {
+            background-color: #0BB197;
+            color: #fff;
+        }
+    }
+}

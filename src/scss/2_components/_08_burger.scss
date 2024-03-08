@@ -1,0 +1,72 @@
+.c-burger {
+    display: none;
+    cursor: pointer;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    text-align: center;
+
+    @include mq(tab, max) {
+        display: block;
+        z-index: 2;
+        right: 30px;
+    }
+
+    a {
+        position: relative;
+        display: block;
+        width: 30px;
+        height: 18px;
+        top: -20px;
+        left: 20px;
+
+        span {
+            position: absolute;
+            margin: -1px 0 0 0;
+            
+            display: block;
+            width: 100%;
+            height: 3px;
+            border: none;
+            border-radius: 1px;
+            background-color: #A2A2A3;
+            transition: top 0.2s 0.2s linear, opacity 0s 0.2s linear, transform 0.2s 0s linear, -webkit-transform 0.2s 0s linear;
+
+            &:nth-child(1) {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: 100%;
+            }
+
+            &:nth-child(3) {
+                top: 50%;
+            }
+        }
+    }
+
+    &.is-active {
+        a {
+            span {
+                transition: top 0.2s 0s linear, opacity 0s 0.2s linear, transform 0.2s 0.2s linear, -webkit-transform 0.2s 0.2s linear;
+                background-color: #000;
+                z-index: 10;
+                &:nth-child(1) {
+                    top: 50%;
+                    -webkit-transform: rotate(225deg);
+                    transform: rotate(225deg);
+                }
+
+                &:nth-child(2) {
+                    top: 50%;
+                    -webkit-transform: rotate(135deg);
+                    transform: rotate(135deg);
+                }
+
+                &:nth-child(3) {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
