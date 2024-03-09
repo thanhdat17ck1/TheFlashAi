@@ -890,19 +890,19 @@ html {
   padding: 12px;
 }
 .btn-login {
-  background-color: #0BB197;
+  background-color: #03A9F5;
   color: #fff;
   font-size: 1.4rem;
 }
 .btn-sign {
-  border: 1px solid #0bb197;
-  color: #0bb197;
+  border: 1px solid #03A9F5;
+  color: #03A9F5;
   font-size: 1.4rem;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn-sign:hover {
-  background-color: #0BB197;
+  background-color: #03A9F5;
   color: #fff;
 }
 
