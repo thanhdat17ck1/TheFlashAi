@@ -8,6 +8,11 @@
   position: relative;
   display: inline-block;
   width: 135px;
+  
+  @include mq(md,max) {
+    width: 105px;
+    top: 10px;
+  }
 }
 
 /* Style the selected option */

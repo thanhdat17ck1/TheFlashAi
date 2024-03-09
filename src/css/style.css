@@ -757,6 +757,12 @@ html {
   display: inline-block;
   width: 135px;
 }
+@media screen and (max-width: 767px) {
+  .custom-select {
+    width: 105px;
+    top: 10px;
+  }
+}
 
 /* Style the selected option */
 .select-selected {
