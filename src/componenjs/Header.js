@@ -39,12 +39,21 @@ var Header = function Header() {
     selectedOption = _useState6[0],
     setSelectedOption = _useState6[1];
   var currentLanguage = _i18n.locales[i18n.language];
-  console.log(currentLanguage);
+  var _useState7 = (0, _react.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isClient = _useState8[0],
+    setIsClient = _useState8[1];
+  var _useTranslation2 = (0, _reactI18next.useTranslation)(),
+    t = _useTranslation2.t;
+  (0, _react.useEffect)(function () {
+    setIsClient(true);
+  }, []);
   var changeLanguage = function changeLanguage(lng) {
+    var language = lng == 'en' ? 'English' : 'Tiếng Việt';
     if (lng == 'en') {
-      setSelectedOption('Tiếng Anh');
+      setSelectedOption(language);
     } else {
-      setSelectedOption('Tiếng Việt');
+      setSelectedOption(language);
     }
     i18n.changeLanguage(lng);
     setIsOpen(!isOpen);
@@ -80,13 +89,13 @@ var Header = function Header() {
     onClick: function onClick() {
       return changeLanguage('vi');
     }
-  }, " ", /*#__PURE__*/_react.default.createElement(_image.default, {
+  }, /*#__PURE__*/_react.default.createElement(_image.default, {
     alt: "vietnamese",
     src: _vietnamese.default,
     width: 20,
     height: 20,
     unoptimized: true
-  }), " Ti\u1EBFng Vi\u1EC7t"), /*#__PURE__*/_react.default.createElement("div", {
+  }), " ", isClient ? t('vi') : ''), /*#__PURE__*/_react.default.createElement("div", {
     className: "option",
     onClick: function onClick() {
       return changeLanguage('en');
@@ -97,16 +106,16 @@ var Header = function Header() {
     width: 20,
     height: 20,
     unoptimized: true
-  }), " Ti\u1EBFng Anh")))), /*#__PURE__*/_react.default.createElement("nav", {
+  }), " ", isClient ? t('en') : '')))), /*#__PURE__*/_react.default.createElement("nav", {
     className: "c-header__nav ".concat(isOpenBurger ? 'is-active' : ''),
     onClick: toggleBurger
   }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_link.default, {
     href: '',
     className: "btn btn-login"
-  }, "Login")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_link.default, {
+  }, isClient ? t('Login') : '')), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_link.default, {
     href: '',
     className: "btn btn-sign"
-  }, "Sign up")))), /*#__PURE__*/_react.default.createElement("div", {
+  }, isClient ? t('SignUp') : '')))), /*#__PURE__*/_react.default.createElement("div", {
     className: "c-burger ".concat(isOpenBurger ? 'is-active' : ''),
     onClick: toggleBurger
   }, /*#__PURE__*/_react.default.createElement("a", null, /*#__PURE__*/_react.default.createElement("span", null), /*#__PURE__*/_react.default.createElement("span", null), /*#__PURE__*/_react.default.createElement("span", null)))));

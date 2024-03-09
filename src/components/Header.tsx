@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../i18n/i18n'
 import {useTranslation} from 'react-i18next'
 import { locales } from '../i18n/i18n'
@@ -15,21 +15,27 @@ const Header = () => {
   const [isOpenBurger, setIsOpenBurger] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Tiếng Việt');
   const currentLanguage = locales[i18n.language as keyof typeof locales]
-  console.log(currentLanguage);
+  const [isClient, setIsClient] = useState(false)
+  const {t} = useTranslation()
+
+  useEffect(() => {
+      setIsClient(true)
+  }, [])
   
   const changeLanguage = (lng: 'en' | 'vi') => {
+    let language = lng == 'en' ? 'English' : 'Tiếng Việt'
+    
     if(lng == 'en') {
-      setSelectedOption('Tiếng Anh')
+      setSelectedOption(language)
     }
     else {
-      setSelectedOption('Tiếng Việt')
+      setSelectedOption(language)
     }
     i18n.changeLanguage(lng)
     setIsOpen(!isOpen);
   }
  
   const toggleOptions = () => {
-    
     setIsOpen(!isOpen);
   };
 
@@ -52,15 +58,15 @@ const Header = () => {
             <FontAwesomeIcon icon={faEarthAmericas} className='color-white' /> {selectedOption}
           </div>
             <div className="select-options">
-              <div className="option" onClick={() => changeLanguage('vi')}> <Image alt='vietnamese' src={flag_vn} width={20} height={20} unoptimized /> Tiếng Việt</div>
-              <div className="option" onClick={() => changeLanguage('en')}><Image alt='english' src={flag_eng} width={20} height={20} unoptimized /> Tiếng Anh</div>
+              <div className="option" onClick={() => changeLanguage('vi')}><Image alt='vietnamese' src={flag_vn} width={20} height={20} unoptimized /> {isClient ? t('vi') : ''}</div>
+              <div className="option" onClick={() => changeLanguage('en')}><Image alt='english' src={flag_eng} width={20} height={20} unoptimized /> {isClient ? t('en') : ''}</div>
             </div>
           </div>
         </div>
         <nav className={`c-header__nav ${isOpenBurger ? 'is-active' : ''}`} onClick={toggleBurger}>
             <ul>
-                <li><Link href={''} className='btn btn-login'>Login</Link></li>
-                <li><Link href={''} className='btn btn-sign'>Sign up</Link></li>
+                <li><Link href={''} className='btn btn-login'>{isClient ? t('Login') : ''}</Link></li>
+                <li><Link href={''} className='btn btn-sign'>{isClient ? t('SignUp') : ''}</Link></li>
             </ul>
         </nav>
         <div className={`c-burger ${isOpenBurger ? 'is-active' : ''}`} onClick={toggleBurger} >

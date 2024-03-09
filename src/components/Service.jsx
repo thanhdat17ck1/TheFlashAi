@@ -41,21 +41,24 @@ const Service = () => {
                                 <div className="type">
                                     <h5>{isClient ? t('TRIAL') : ''}</h5>
                                 </div>
-                                <span>Free</span>
+                                <span>{isClient ? t('Free') : ''}</span>
                             </div>
                         </div>
                     </div>
                     <div className="card-mid">
-                        <h4><sup><small>$</small></sup> 0/<span>2 week</span></h4>
-                        <button onClick={openModal}>Buy Now</button>
+                        <h4><sup><small>$</small></sup> 0/<span> {isClient ? t('MONTH') : ''}</span></h4>
+                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
-                        <h5>Plan Features :</h5>
+                        <h5>{isClient ? t('Plan Features') : ''} :</h5>
                         <ul>
-                            <li><Checkbox_cirle />One license only</li>
-                            <li><Checkbox_cirle />Recommended balance from 2000/pair</li>
-                            <li><Checkbox_cirle />EURUSD Only</li>
-                            <li><Checkbox_cirle />Use default parameters</li>
+                            <li><Checkbox_cirle />{isClient ? t('One license only') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Recommended balance only') : ''} 200$</li>
+                            <li><Checkbox_cirle />{isClient ? t('PAIR') : ''}: EURUSD Only</li>
+                            <li><Checkbox_cirle />{isClient ? t('Momentum tech') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Profit') : ''}: 10-25%/ {isClient ? t('MONTH') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Risk') : ''}: 0%</li>
+                            <li><Checkbox_cirle />{isClient ? t('Fee share') : ''}: 30% {isClient ? t('Profit') : ''}</li>
                         </ul>
                         
                     </div>
@@ -74,24 +77,24 @@ const Service = () => {
                                 <div className="type">
                                     <h5>{isClient ? t('BASIC') : ''}</h5>
                                 </div>
-                                <span>Multiple Pair</span>
+                                {/* <span>Multiple Pair</span> */}
                             </div>
                         </div>
                     </div>
                     <div className="card-mid">
-                        <h4><sup><small>$</small></sup> 50/<span> month</span></h4>
-                        <button onClick={openModal}>Buy Now</button>
+                        <h4><sup><small>$</small></sup> 100/<span> {isClient ? t('MONTH') : ''}</span></h4>
+                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
-                        <h5>Plan Features :</h5>
+                        <h5>{isClient ? t('Plan Features') : ''} :</h5>
                         <ul>
-                            <li><Checkbox_cirle />Free first license</li>
-                            <li><Checkbox_cirle />Discount 30% for additional license</li>
-                            <li><Checkbox_cirle />Recommended balance from 2000/pair</li>
-                            <li><Checkbox_cirle />EURUSD</li>
-                            <li><Checkbox_cirle />Use default parameters</li>
-                            <li><Checkbox_cirle />5% discount for semi-annual payment</li>
-                            <li><Checkbox_cirle />10% discount for annual payment</li>
+                            <li><Checkbox_cirle />{isClient ? t('One license only') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Recommended balance only') : ''} 500$</li>
+                            <li><Checkbox_cirle />{isClient ? t('PAIR') : ''}: GBPUSD, USDJPY</li>
+                            <li><Checkbox_cirle />{isClient ? t('Momentum tech') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Profit') : ''}: 10-40$ {isClient ? t('MONTH') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Risk') : ''}: 5-10% (max drawdown)</li>
+                            <li><Checkbox_cirle />{isClient ? t('Fee share') : ''}: 30% {isClient ? t('Profit') : ''}</li>
                         </ul>
                         
                     </div>
@@ -103,74 +106,37 @@ const Service = () => {
                         <div className="d-flex">
                             <div className="avata">
                                 <span>
-                                    <FontAwesomeIcon icon={faShieldAlt} className='color-white' />
+                                    <FontAwesomeIcon icon={faTrophy} className='color-white' />
                                 </span>
                             </div>
                             <div className='info'>
                                 <div className="type">
-                                    <h5>{isClient ? t('PREMIUM') : ''}</h5>
+                                    <h5>{isClient ? t('ADVANCE') : ''}</h5>
                                 </div>
-                                <span>Unlimited</span>
+                                {/* <span>Multiple Pair</span> */}
                             </div>
                         </div>
                     </div>
                     <div className="card-mid">
-                        <h4><sup><small>$</small></sup> 100/<span> month</span></h4>
-                        <button onClick={openModal}>Buy Now</button>
+                        <h4><sup><small>$</small></sup> 100/<span> {isClient ? t('MONTH') : ''}</span></h4>
+                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
-                        <h5>Plan Features :</h5>
+                        <h5>{isClient ? t('Plan Features') : ''} :</h5>
                         <ul>
-                            <li><Checkbox_cirle />Free first license</li>
-                            <li><Checkbox_cirle />Discount 30% for additional license</li>
-                            <li><Checkbox_cirle />Recommended balance from 2000/pair</li>
-                            <li><Checkbox_cirle />EURUSD, GBPUSD, AUDUSD, NZDUSD, EURJPY, USDCHF, GBPJPY</li>
-                            <li><Checkbox_cirle />Customize parameters</li>
-                            <li><Checkbox_cirle />5% discount for semi-annual payment</li>
-                            <li><Checkbox_cirle />10% discount for annual payment</li>
+                            <li><Checkbox_cirle />{isClient ? t('One license only') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Recommended balance only') : ''} 500$</li>
+                            <li><Checkbox_cirle />{isClient ? t('PAIR') : ''}: GBPUSD, USDJPY</li>
+                            <li><Checkbox_cirle />{isClient ? t('Momentum tech') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Profit') : ''}: {'>'} 50$ {isClient ? t('MONTH') : ''}</li>
+                            <li><Checkbox_cirle />{isClient ? t('Risk') : ''}: 20-30% (max drawdown)</li>
+                            <li><Checkbox_cirle />{isClient ? t('Fee share') : ''}: 30% {isClient ? t('Profit') : ''}</li>
                         </ul>
                         
                     </div>
                 </div>
             </div>
-            <div className="card">
-                <div className="card-body p-4">
-                    <div className="card-top">
-                        <div className="d-flex">
-                            <div className="avata">
-                                <span>
-                                    <FontAwesomeIcon icon={faShieldAlt} className='color-white' />
-                                </span>
-                            </div>
-                            <div className='info'>
-                                <div className="type">
-                                    <h5>{isClient ? t('PREMIUM SHARE') : ''}</h5>
-                                </div>
-                                <span>Pay later</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card-mid">
-                        <h4><sup><small>%</small></sup> 30<span> profit share monthly</span></h4>
-                        <button onClick={openModal}>Buy Now</button>
-                    </div>
-                    <div className="card-bottom">
-                        <h5>Plan Features :</h5>
-                        <ul> 
-                            <li><Checkbox_cirle />30% profit share first license</li>
-                            <li><Checkbox_cirle />25% profit share for additional license</li>
-                            <li><Checkbox_cirle />Recommended balance from 2000/pair</li>
-                            <li><Checkbox_cirle />EURUSD, GBPUSD, AUDUSD, NZDUSD, EURJPY, USDCHF, GBPJPY</li>
-                            <li><Checkbox_cirle />Customize parameters</li>
-                            <li><Checkbox_cirle />-5% profit share for account from $20k</li>
-                            <li><Checkbox_cirle />-10% profit share for account from $50k</li>
-                            <li><Checkbox_cirle />-15% profit share for account from $70k</li>
-                            <li><Checkbox_cirle />-20% profit share for account from $100k</li>
-                        </ul>
-                        
-                    </div>
-                </div>
-            </div>
+            
         </div>
         {/* Modal */}
         <div className='modal'>
@@ -180,19 +146,19 @@ const Service = () => {
                 contentLabel="Example Modal"
             >
                 <div className='heading'>
-                    <h2>Đăng ký</h2>
+                    <h2>{isClient ? t('Register') : ''}</h2>
                 </div>
                 <form action="">
                     <div>
-                        <input type="text" name='name' placeholder='Nhập họ tên' />
+                        <input type="text" name='name' placeholder={isClient ? t('Enter fullname') : ''} />
                     </div>
                     <div>
-                        <input type="text" name='email' placeholder='Nhập email' />
+                        <input type="text" name='email' placeholder={isClient ? t('Enter email') : ''} />
                     </div>
                     <div>
-                        <input type="text" name='phone' placeholder='Nhập số điện thoại' />
+                        <input type="text" name='phone' placeholder={isClient ? t('Enter phone') : ''} />
                     </div>
-                    <input type="submit" value="Gửi" />
+                    <input type="submit" value={isClient ? t('Submit') : ''} />
                 </form>
                 {/* <button onClick={closeModal}>Close Modal</button> */}
             </Modal>

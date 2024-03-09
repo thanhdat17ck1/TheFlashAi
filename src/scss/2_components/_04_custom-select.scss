@@ -7,7 +7,7 @@
 .custom-select {
   position: relative;
   display: inline-block;
-  width: 130px;
+  width: 135px;
 }
 
 /* Style the selected option */
@@ -33,6 +33,10 @@
   max-height: 200px;
   overflow-y: auto;
   text-align: center;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .option {

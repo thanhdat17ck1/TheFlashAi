@@ -559,8 +559,8 @@ html {
 .list-card {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 25px 1fr 25px 1fr 25px 1fr;
-  grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: 1fr 25px 1fr 25px 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 @media screen and (max-width: 1199px) {
@@ -755,7 +755,7 @@ html {
 .custom-select {
   position: relative;
   display: inline-block;
-  width: 130px;
+  width: 135px;
 }
 
 /* Style the selected option */
@@ -781,6 +781,10 @@ html {
   max-height: 200px;
   overflow-y: auto;
   text-align: center;
+}
+.select-options img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .option {
