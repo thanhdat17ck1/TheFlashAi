@@ -6,7 +6,7 @@
     text-align: center;
 
     @include mq(tab, max) {
-        display: block;
+        display: inline-block;
         z-index: 2;
         right: 30px;
     }

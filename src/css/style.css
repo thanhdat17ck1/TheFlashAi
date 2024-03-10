@@ -1077,7 +1077,7 @@ html {
 }
 @media screen and (max-width: 1023px) {
   .c-burger {
-    display: block;
+    display: inline-block;
     z-index: 2;
     right: 30px;
   }
