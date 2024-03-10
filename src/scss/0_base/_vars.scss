@@ -6,6 +6,7 @@ $main-fonts: "Work Sans", sans-serif;
 $poppins-fonts: "poppins", sans-serif;
 $roboto-fonts: "Roboto", sans-serif;
 $main-color: #03A9F5;
+$bg-main: #88daff;
 
 //color common
 .bg-1 {
@@ -22,6 +23,10 @@ $main-color: #03A9F5;
 
 .align-item-center {
     align-items: center;
+}
+
+.g-1 {
+    gap: 1rem;
 }
 
 .mt-1 {

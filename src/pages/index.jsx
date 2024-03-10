@@ -7,27 +7,20 @@ import Layout from '@/components/Layout'
 import Service from '../components/Service';
 import Deposit from '../components/Deposit';
 import Section1 from '../components/Section1';
+import LayDuLieu from '../components/LayDuLieu';
 
 const Page = () => {
-  const handleClick = () => {
-    alert("haha")
-  }
   return (
     <>
       <Head>
-        <title>Trang Chủ - Crystal</title>
+        <title>Trang Chủ - The AI Flash</title>
       </Head>
       <Layout>
         <main className='l-container'>
           <section>
             <Section1 />
           </section>
-          <section className='mb-3'>
-            <Deposit />
-          </section>
-          <section className='mb-3'>
-            <Deposit />
-          </section>
+          <Deposit />
           <section className='mb-3'>
             <Service />
           </section>

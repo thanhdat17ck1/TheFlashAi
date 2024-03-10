@@ -6,10 +6,22 @@ import { faCube, faTrophy, faShieldAlt } from '@fortawesome/free-solid-svg-icons
 import Checkbox_cirle from './icon/Checkbox-cirle';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import { URL_API } from '../libs/libs';
+import axios from 'axios';
 
 const Service = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isClient, setIsClient] = useState(false)
+    const [packageName, setPackageName] = useState("")
+    const [formData, setFormData] = useState({
+        id: 0,
+        userName: '',
+        email: '',
+        phoneNumber: '',
+        package: '',
+        dateTime: new Date()
+    });
+
     const {t} = useTranslation()
 
     useEffect(() => {
@@ -17,7 +29,8 @@ const Service = () => {
     }, [])
 
      // Hàm mở modal
-    const openModal = () => {
+    const openModal = (packageType) => {
+        setFormData({ ...formData, package: packageType });
         setIsOpen(true);
     };
 
@@ -25,6 +38,33 @@ const Service = () => {
     const closeModal = () => {
         setIsOpen(false);
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(packageName);
+    
+        try {
+            const response = await axios.post(`${URL_API}/UserRequest/Post`, formData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.status === 200) {
+                // Xử lý khi gửi thành công
+                console.log('Data sent successfully!');
+            } else {
+                // Xử lý khi gửi thất bại
+                console.error('Failed to send data');
+            }
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };    
     return (
     <>
         <div className="list-card">
@@ -47,7 +87,7 @@ const Service = () => {
                     </div>
                     <div className="card-mid">
                         <h4><sup><small>$</small></sup> 0/<span> {isClient ? t('MONTH') : ''}</span></h4>
-                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
+                        <button onClick={() => openModal('Free')} >{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
                         <h5>{isClient ? t('Plan Features') : ''} :</h5>
@@ -83,7 +123,7 @@ const Service = () => {
                     </div>
                     <div className="card-mid">
                         <h4><sup><small>$</small></sup> 100/<span> {isClient ? t('MONTH') : ''}</span></h4>
-                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
+                        <button onClick={() => openModal('Basic')}>{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
                         <h5>{isClient ? t('Plan Features') : ''} :</h5>
@@ -119,7 +159,7 @@ const Service = () => {
                     </div>
                     <div className="card-mid">
                         <h4><sup><small>$</small></sup> 100/<span> {isClient ? t('MONTH') : ''}</span></h4>
-                        <button onClick={openModal}>{isClient ? t('Buy Now') : ''}</button>
+                        <button onClick={() => openModal('Advance')}>{isClient ? t('Buy Now') : ''}</button>
                     </div>
                     <div className="card-bottom">
                         <h5>{isClient ? t('Plan Features') : ''} :</h5>
@@ -148,19 +188,18 @@ const Service = () => {
                 <div className='heading'>
                     <h2>{isClient ? t('Register') : ''}</h2>
                 </div>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <input type="text" name='name' placeholder={isClient ? t('Enter fullname') : ''} />
+                        <input type="text" name='userName' placeholder={isClient ? t('Enter fullname') : ''} onChange={handleChange}/>
                     </div>
                     <div>
-                        <input type="text" name='email' placeholder={isClient ? t('Enter email') : ''} />
+                        <input type="text" name='email' placeholder={isClient ? t('Enter email') : ''} onChange={handleChange}/>
                     </div>
                     <div>
-                        <input type="text" name='phone' placeholder={isClient ? t('Enter phone') : ''} />
+                        <input type="text" name='phoneNumber' placeholder={isClient ? t('Enter phone') : ''} onChange={handleChange}/>
                     </div>
                     <input type="submit" value={isClient ? t('Submit') : ''} />
                 </form>
-                {/* <button onClick={closeModal}>Close Modal</button> */}
             </Modal>
         </div>
     </>

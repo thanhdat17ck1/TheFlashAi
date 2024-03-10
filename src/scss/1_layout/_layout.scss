@@ -11,9 +11,9 @@ body {
     overflow: hidden;
   }
 
-  @include mq(xxl, max) {
-    font-size: 1.5rem;
-  }
+  // @include mq(xxl, max) {
+  //   font-size: 1.5rem;
+  // }
 }
 
 
