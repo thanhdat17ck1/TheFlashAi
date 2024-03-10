@@ -8,11 +8,16 @@ import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
 import { URL_API } from '../libs/libs';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Service = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isClient, setIsClient] = useState(false)
     const [packageName, setPackageName] = useState("")
+    const [checkUsername, setCheckUsername] = useState(true);
+    const [checkEmail, setCheckEmail] = useState(true);
+    const [checkPhone, setCheckPhone] = useState(true);
     const [formData, setFormData] = useState({
         id: 0,
         userName: '',
@@ -39,25 +44,52 @@ const Service = () => {
         setIsOpen(false);
     };
 
+    const validateEmail = (email) => {
+        // Biểu thức chính quy để kiểm tra địa chỉ email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(packageName);
-    
-        try {
-            const response = await axios.post(`${URL_API}/UserRequest/Post`, formData, {
-                headers: {
-                    'Content-Type': 'application/json'
+        setCheckUsername(true)
+        setCheckEmail(true)
+        setCheckPhone(true)
+        if(formData.userName.length > 0 && validateEmail(formData.email) && formData.phoneNumber.length > 0) {
+            try {
+                const response = await axios.post(`${URL_API}/UserRequest/Post`, formData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.status === 200) {
+                    // Xử lý khi gửi thành công
+                    toast.success(`Đăng ký thành công`, {
+                        icon: "😊",
+                        position: "top-right",
+                    });
+                    setIsOpen(false);
+                    console.log('Data sent successfully!');
+                } else {
+                    // Xử lý khi gửi thất bại
+                    console.error('Failed to send data');
                 }
-            });
-            if (response.status === 200) {
-                // Xử lý khi gửi thành công
-                console.log('Data sent successfully!');
-            } else {
-                // Xử lý khi gửi thất bại
-                console.error('Failed to send data');
+            } catch (error) {
+                console.error('Error sending data:', error);
             }
-        } catch (error) {
-            console.error('Error sending data:', error);
+        }
+        else {
+            console.log(formData.userName, "ee");
+            if(formData.userName.length == 0) {
+                setCheckUsername(false)
+            }
+            if(formData.phoneNumber.length == 0) {
+                setCheckPhone(false)
+            }
+            if(validateEmail(formData.email) == false) {
+                setCheckEmail(false)
+            }
         }
     };
 
@@ -191,17 +223,21 @@ const Service = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input type="text" name='userName' placeholder={isClient ? t('Enter fullname') : ''} onChange={handleChange}/>
+                        {checkUsername == false ? <span className='error'>Họ và tên không được bỏ trống</span> : ""}
                     </div>
                     <div>
                         <input type="text" name='email' placeholder={isClient ? t('Enter email') : ''} onChange={handleChange}/>
+                        {checkEmail == false ? <span className='error'>Email không hợp lệ</span> : ""}
                     </div>
                     <div>
                         <input type="text" name='phoneNumber' placeholder={isClient ? t('Enter phone') : ''} onChange={handleChange}/>
+                        {checkPhone == false ? <span className='error'>Số điện thoại không hợp lệ</span> : ""}
                     </div>
                     <input type="submit" value={isClient ? t('Submit') : ''} />
                 </form>
             </Modal>
         </div>
+        <ToastContainer autoClose={1500} />
     </>
   )
 }

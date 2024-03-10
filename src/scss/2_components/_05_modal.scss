@@ -29,6 +29,15 @@
                 border-color: #4158d0;
             }
         }
+
+        .error {
+          color: red;
+          margin-left: 18px;
+          font-size: 1.4rem;
+          font-weight: 500;
+          margin-top: 5px;
+          display: block;
+        }
         input[type="submit"] {
             color: #fff;
             border: none;

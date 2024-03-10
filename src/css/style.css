@@ -945,6 +945,14 @@ html {
 .ReactModal__Content form input:focus {
   border-color: #4158d0;
 }
+.ReactModal__Content form .error {
+  color: red;
+  margin-left: 18px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-top: 5px;
+  display: block;
+}
 .ReactModal__Content form input[type=submit] {
   color: #fff;
   border: none;
