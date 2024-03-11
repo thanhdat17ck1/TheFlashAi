@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Window from '@/components/icon/window'
+import Window from '@/components/icon/Window'
 import Macos from '@/components/icon/Macos'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -17,10 +17,10 @@ const Footer = () => {
               <Link target='_blink' href={'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader5.com&amp;utm_campaign=download.mt5.macos'}><Macos /></Link>
             </div>
           </div>
-          <div className="copy-right">
+        </div>
+        <div className="copy-right">
             © theaiflash 2024. All rights reserved
           </div>
-        </div>
         <div className="right">
           <div className='above'>
             <p>Liên hệ</p>
@@ -31,7 +31,7 @@ const Footer = () => {
               <li></li>
             </ul>
           </div>
-          <div className="below">
+          {/* <div className="below">
             <div className="download-app">
               <div className="download-app__item">
                 <Link href={'#'} >
@@ -49,7 +49,7 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

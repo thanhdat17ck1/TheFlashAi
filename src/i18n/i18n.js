@@ -38,7 +38,10 @@ var resources = {
       'Login': 'Login',
       'SignUp': 'Sign Up',
       'en': 'English',
-      'vi': 'Vietnamese'
+      'vi': 'Vietnamese',
+      'validate_username': 'Full name cannot be blank',
+      'validate_email': 'Invalid email',
+      'validate_phone': 'invalid phone number'
     }
   },
   vi: {
@@ -67,7 +70,10 @@ var resources = {
       'Login': 'Đăng nhập',
       'SignUp': 'Đăng ký',
       'en': 'Tiếng Anh',
-      'vi': 'Tiếng Việt'
+      'vi': 'Tiếng Việt',
+      'validate_username': 'Họ và tên không được bỏ trống',
+      'validate_email': 'Email không hợp lệ',
+      'validate_phone': 'Số điện thoại không hợp lệ'
     }
   }
 };

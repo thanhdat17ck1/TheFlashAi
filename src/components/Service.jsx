@@ -41,7 +41,10 @@ const Service = () => {
 
     // Hàm đóng modal
     const closeModal = () => {
-        setIsOpen(false);
+        setIsOpen(false)
+        setCheckUsername(true)
+        setCheckPhone(true)
+        setCheckEmail(true)
     };
 
     const validateEmail = (email) => {
@@ -49,6 +52,25 @@ const Service = () => {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailPattern.test(email);
     };
+    
+    const isValidVietnamesePhoneNumber = (phoneNumber) => {
+        // Regex cho số điện thoại Việt Nam, ví dụ: +84xxxxxxxxx hoặc 0xxxxxxxxx
+        const vietnamesePhoneRegex = /^(?:\+?84|0)(?:\d){9}$/;
+        return vietnamesePhoneRegex.test(phoneNumber);
+    };
+    
+    // Hàm kiểm tra số điện thoại quốc tế
+    const isValidInternationalPhoneNumber = (phoneNumber) => {
+        // Regex cho số điện thoại quốc tế, ví dụ: +xxxxxxxxxxx
+        const internationalPhoneRegex = /^\+(?:\d){8,15}$/;
+        return internationalPhoneRegex.test(phoneNumber);
+    };
+
+    //remove spaace
+    const removeSapce = (string) => {
+        const str_replace = string.replace(/\s/g, '');
+        return str_replace;
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,7 +78,8 @@ const Service = () => {
         setCheckUsername(true)
         setCheckEmail(true)
         setCheckPhone(true)
-        if(formData.userName.length > 0 && validateEmail(formData.email) && formData.phoneNumber.length > 0) {
+        if(formData.userName.length > 0 && validateEmail(formData.email) && formData.phoneNumber.length > 0 && 
+        (isValidVietnamesePhoneNumber(removeSapce(formData.phoneNumber)) || isValidInternationalPhoneNumber((formData.phoneNumber)))) {
             try {
                 const response = await axios.post(`${URL_API}/UserRequest/Post`, formData, {
                     headers: {
@@ -70,6 +93,14 @@ const Service = () => {
                         position: "top-right",
                     });
                     setIsOpen(false);
+                    setFormData({
+                        id: 0,
+                        userName: '',
+                        email: '',
+                        phoneNumber: '',
+                        package: '',
+                        dateTime: new Date()
+                    });
                     console.log('Data sent successfully!');
                 } else {
                     // Xử lý khi gửi thất bại
@@ -90,12 +121,18 @@ const Service = () => {
             if(validateEmail(formData.email) == false) {
                 setCheckEmail(false)
             }
+            if((isValidVietnamesePhoneNumber(removeSapce(formData.phoneNumber)) || isValidInternationalPhoneNumber(removeSapce(formData.phoneNumber))) == false) {
+                setCheckPhone(false)
+            }
         }
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        setCheckUsername(true)
+        setCheckPhone(true)
+        setCheckEmail(true)
     };    
     return (
     <>
@@ -223,15 +260,15 @@ const Service = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input type="text" name='userName' placeholder={isClient ? t('Enter fullname') : ''} onChange={handleChange}/>
-                        {checkUsername == false ? <span className='error'>Họ và tên không được bỏ trống</span> : ""}
+                        {checkUsername == false ? <span className='error'>{isClient ? t('validate_username') : ''}</span> : ""}
                     </div>
                     <div>
                         <input type="text" name='email' placeholder={isClient ? t('Enter email') : ''} onChange={handleChange}/>
-                        {checkEmail == false ? <span className='error'>Email không hợp lệ</span> : ""}
+                        {checkEmail == false ? <span className='error'>{isClient ? t('validate_email') : ''}</span> : ""}
                     </div>
                     <div>
                         <input type="text" name='phoneNumber' placeholder={isClient ? t('Enter phone') : ''} onChange={handleChange}/>
-                        {checkPhone == false ? <span className='error'>Số điện thoại không hợp lệ</span> : ""}
+                        {checkPhone == false ? <span className='error'>{isClient ? t('validate_phone') : ''}</span> : ""}
                     </div>
                     <input type="submit" value={isClient ? t('Submit') : ''} />
                 </form>

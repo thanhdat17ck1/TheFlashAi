@@ -157,11 +157,6 @@ main {
 html {
   font-size: 62.5%;
 }
-@media screen and (max-width: 767px) {
-  html {
-    font-size: 55%;
-  }
-}
 
 body,
 table,
@@ -566,6 +561,9 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media screen and (max-width: 767px) {
   .c-footer__inner {
@@ -579,25 +577,19 @@ html {
   }
 }
 @media screen and (max-width: 767px) {
-  .c-footer .left {
-    margin-bottom: 2rem;
-  }
   .c-footer .left .d-flex.align-item-center.g-1 {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
 }
-.c-footer .copy-right {
-  margin-top: 10px;
-}
 @media screen and (max-width: 767px) {
   .c-footer .copy-right {
     text-align: center;
+    margin-bottom: 1rem;
   }
 }
 .c-footer .above {
-  margin-bottom: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -873,7 +865,7 @@ html {
 }
 @media screen and (max-width: 767px) {
   .custom-select {
-    width: 105px;
+    width: 135px;
     top: 10px;
   }
 }
@@ -919,9 +911,10 @@ html {
 
 .ReactModal__Content .heading {
   text-align: center;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
-  color: #fff;
+  background-color: #88daff;
+  color: #5b4949;
   padding: 15px 0;
+  font-weight: 700;
 }
 .ReactModal__Content form {
   padding: 20px;
@@ -954,16 +947,17 @@ html {
   display: block;
 }
 .ReactModal__Content form input[type=submit] {
-  color: #fff;
+  color: #5b4949;
   border: none;
   padding-left: 0;
   font-size: 2rem;
   font-weight: 500;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: #88daff;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   padding: 10px;
   height: 25px;
+  font-weight: 700;
 }
 .ReactModal__Content form input[type=submit]:hover {
   opacity: 0.7;
