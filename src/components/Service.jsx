@@ -259,6 +259,9 @@ const Service = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div>
+                        <h4>{isClient ? t('text_1') : ''}</h4>
+                    </div>
+                    <div>
                         <input type="text" name='userName' placeholder={isClient ? t('Enter fullname') : ''} onChange={handleChange}/>
                         {checkUsername == false ? <span className='error'>{isClient ? t('validate_username') : ''}</span> : ""}
                     </div>

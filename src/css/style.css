@@ -919,6 +919,10 @@ html {
 .ReactModal__Content form {
   padding: 20px;
 }
+.ReactModal__Content form h4 {
+  text-align: center;
+  color: #57abd1;
+}
 .ReactModal__Content form div {
   margin-bottom: 15px;
 }

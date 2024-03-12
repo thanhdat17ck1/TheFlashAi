@@ -41,7 +41,8 @@ var resources = {
       'vi': 'Vietnamese',
       'validate_username': 'Full name cannot be blank',
       'validate_email': 'Invalid email',
-      'validate_phone': 'invalid phone number'
+      'validate_phone': 'invalid phone number',
+      'text_1': 'Please leave your information for support'
     }
   },
   vi: {
@@ -73,7 +74,8 @@ var resources = {
       'vi': 'Tiếng Việt',
       'validate_username': 'Họ và tên không được bỏ trống',
       'validate_email': 'Email không hợp lệ',
-      'validate_phone': 'Số điện thoại không hợp lệ'
+      'validate_phone': 'Số điện thoại không hợp lệ',
+      'text_1': 'Vui lòng để lại thông tin để được hỗ trợ'
     }
   }
 };
